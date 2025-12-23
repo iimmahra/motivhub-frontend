@@ -4,7 +4,6 @@ import SignIn from './components/SignIn'
 import { Routes, Route } from 'react-router-dom'
 import ChannelForm from './components/ChannelForm'
 import Home from './components/Home'
-import ChannelDetails from './components/ChannelDetails'
 
 
 const App = () => {
@@ -19,7 +18,6 @@ const App = () => {
           <Route path="/" element={ <SignIn/> } />
           <Route path='channelForm' element={<ChannelForm/>}/>
           <Route path="home" element={ <Home/> } />
-          <Route path="channelDetails" element={ <ChannelDetails/> } />
 
 
 
