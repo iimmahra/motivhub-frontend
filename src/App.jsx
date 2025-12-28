@@ -9,6 +9,8 @@ import { useState,useEffect } from "react"
 import initialChannels from './channels'
 import Register from './components/Register.'
 import { CheckSession } from './services/Auth'
+import PostDetails from './components/PostDetails'
+import posts from './posts'
 
 
 
@@ -80,6 +82,7 @@ useEffect(() => {
           newChannel={newChannel}
           handleChange={handleChange}
           addChannel={addChannel} /> } />
+          <Route path="/channelDetails/:id" element={ <PostDetails posts={posts}/> } />
 
 
 

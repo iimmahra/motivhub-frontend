@@ -5,7 +5,7 @@ const ChannelForm =({addChannel, newChannel, handelChange})=>{
    let navigate = useNavigate()
 
   const handleSubmit = (e) => {
-    let id =  addBoat(e)
+    let id =  addChannel(e)
     navigate(`/home/${id}`)
 
   }
@@ -22,7 +22,7 @@ const ChannelForm =({addChannel, newChannel, handelChange})=>{
       <button>Submit</button>
     </form>
     </div>
-    
+
   )
 
 }
