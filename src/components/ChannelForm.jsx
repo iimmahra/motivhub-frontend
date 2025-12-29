@@ -1,30 +1,62 @@
-import { useNavigate } from "react-router-dom"
+import { useState } from 'react'
+import { CreateChannel } from '../services/ChannelServies'
+import { useNavigate } from 'react-router-dom'
 
-const ChannelForm =({addChannel, newChannel, handelChange})=>{
 
-   let navigate = useNavigate()
+const ChannelForm = () => {
+  let navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    let id =  addChannel(e)
-    navigate(`/home/${id}`)
+  const emptyChannel = {
+    name: "",
+    description: ""
+  }
+
+  const [newChannel, setNewChannel] = useState(emptyChannel)
+
+  const addChannel = async (e) => {
+    e.preventDefault()
+
+    const createdChannel = await CreateChannel(newChannel)
+    setNewChannel(emptyChannel)
+    return createdChannel
 
   }
 
-  const channel = {...newChannel}
+  const handleChange = (e) => {
+    setNewChannel({ ...newChannel, [e.target.name]: e.target.value })
 
-  return(
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const createdChannel = await addChannel(e)
+    navigate(`/home/${createdChannel._id}`)
+  }
+
+  return (
     <div>
-    <h1>Add New Channel</h1>
+      <h1>Add New Channel</h1>
 
-    <form onSubmit={ handleSubmit }>
-      <input type="text" value={channel.name} onChange={handelChange} name={'name'} placeholder={'name'} />
-      <input type="text-area" value={channel.description} onChange={handelChange} name={'description'} placeholder={'description'} />
-      <button>Submit</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={newChannel.name}
+          onChange={handleChange}
+          placeholder="name"
+        />
+
+        <textarea
+          name="description"
+          value={newChannel.description}
+          onChange={handleChange}
+          placeholder="description"
+        />
+
+        <button type="submit" onClick={handleSubmit}>Submit</button>
+      </form>
     </div>
-
   )
-
 }
 
 export default ChannelForm
