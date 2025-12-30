@@ -1,12 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { Signout } from "../services/Auth"
 
 
 const Nav = () => {
-  const navigate = useNavigate()
   const handleLogOut = () => {
     Signout()
-    navigate("/")
   }
   const isLoggedIn = !!localStorage.getItem("token")
 
@@ -22,10 +20,8 @@ const Nav = () => {
         {isLoggedIn ? (
           <>
             <NavLink to="profile">My Profile</NavLink>
+            <NavLink to="/" onClick={handleLogOut}>Logout</NavLink>
 
-            <button onClick={handleLogOut} >
-              Logout
-            </button>
           </>
         ) : (
           <>
