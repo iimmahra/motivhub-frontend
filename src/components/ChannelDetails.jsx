@@ -45,6 +45,13 @@ const ChannelDetails = () => {
     <div className="post">
       {posts.map((post) => (
         <div className="card" key={post._id}>
+         {post?.image && (
+        <img
+        className="post-image"
+          src={`http://localhost:3000${post.image}`}
+          alt="post"
+        />
+      )}
           <Link to={`/postDetails/${post._id}`}>
             <h2>{post.title}</h2>
             <h3>{post.body}</h3>

@@ -49,3 +49,14 @@
   opacity: 0.85;
   background-color: rgb(115, 113, 115);
 }
+
+.channelDetails .card img {
+  width: 100%;          
+  max-width: 180px;     
+  max-height: 120px;    
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
