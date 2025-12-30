@@ -2,7 +2,6 @@ import './styles/home.css'
 import './styles/channel.css'
 import './styles/profile.css'
 import './styles/post.css'
-
 import Nav from './components/Nav'
 import SignIn from './components/SignIn'
 import { Routes, Route, Router } from 'react-router-dom'
@@ -25,7 +24,6 @@ const App = () => {
 
 
   const handleLogOut = () => {
-    // Resets all auth related state and clears localStorage
     setUser(null)
     localStorage.clear()
   }
@@ -59,7 +57,7 @@ const App = () => {
 
           <Route path="home" element={<Home />} />
 
-          {/* channel */}
+       
           <Route path="/home/:id" element={<ChannelDetails />} />
 
           {/* channelForm */}
